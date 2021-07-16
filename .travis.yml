@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+language: generic 
+
+before_install:
+  - docker build -f Dockerfile.dev -t jamirineni/docker-react .
+
+script:
+  - docker run -e CI=true jamirineni/docker-react npm run test
